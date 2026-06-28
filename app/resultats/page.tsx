@@ -119,13 +119,15 @@ function ResultsContent() {
       <div className="flex gap-8">
         {/* Sidebar filters — desktop */}
         <aside className="hidden lg:block w-64 shrink-0">
-          <FiltersPanel
-            filters={filters}
-            setFilters={setFilters}
-            toggleCategory={toggleCategory}
-            resetFilters={resetFilters}
-            hasActiveFilters={hasActiveFilters}
-          />
+          <div className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-5 shadow-card sticky top-24">
+            <FiltersPanel
+              filters={filters}
+              setFilters={setFilters}
+              toggleCategory={toggleCategory}
+              resetFilters={resetFilters}
+              hasActiveFilters={hasActiveFilters}
+            />
+          </div>
         </aside>
 
         {/* Results */}

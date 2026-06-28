@@ -12,7 +12,10 @@ export default function HomePage() {
   return (
     <main>
       {/* Hero */}
-      <section className="relative bg-surface-muted dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800">
+      <section className="relative overflow-hidden hero-gradient border-b border-gray-200 dark:border-gray-800">
+        {/* Decorative blobs */}
+        <div aria-hidden="true" className="absolute -top-24 -right-24 w-[560px] h-[560px] rounded-full bg-primary/[0.06] dark:bg-primary/[0.10] blur-[120px] pointer-events-none" />
+        <div aria-hidden="true" className="absolute -bottom-20 left-[12%] w-[340px] h-[340px] rounded-full bg-primary/[0.04] dark:bg-primary/[0.07] blur-[90px] pointer-events-none" />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
           <div className="max-w-2xl mb-10">
             <p className="text-sm font-medium text-primary mb-4 tracking-wide uppercase">
@@ -51,7 +54,7 @@ export default function HomePage() {
             <Link
               key={cat.label}
               href={`/resultats?category=${cat.label}`}
-              className="group flex flex-col items-center gap-3 p-6 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl hover:border-primary/40 hover:shadow-card-hover transition-all duration-200"
+              className="group flex flex-col items-center gap-3 p-6 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl shadow-card hover:border-primary/40 hover:shadow-card-hover transition-all duration-200"
             >
               <span className="text-2xl font-medium text-gray-300 dark:text-gray-600 group-hover:text-primary/40 transition-colors select-none">
                 {cat.abbr}
@@ -70,7 +73,7 @@ export default function HomePage() {
       </section>
 
       {/* Voitures mises en avant */}
-      <section className="bg-surface-muted dark:bg-gray-950 border-t border-gray-200 dark:border-gray-800">
+      <section className="border-t border-gray-200 dark:border-gray-800">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-xl font-medium text-gray-900 dark:text-white">
@@ -88,7 +91,7 @@ export default function HomePage() {
               <Link
                 key={car.id}
                 href={`/voiture/${car.id}`}
-                className="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-5 hover:border-primary/30 hover:shadow-card-hover transition-all duration-200"
+                className="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-5 shadow-card hover:border-primary/30 hover:shadow-card-hover transition-all duration-200"
               >
                 <div className="flex items-start justify-between mb-4">
                   <div>

@@ -24,6 +24,11 @@ export const metadata: Metadata = {
     locale: "fr_MA",
     siteName: "Autora",
   },
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({
@@ -33,7 +38,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr" className={inter.variable}>
-      <body className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-white antialiased">
+      <body className="min-h-screen flex flex-col bg-[#F7F8F8] dark:bg-gray-950 text-gray-900 dark:text-white antialiased">
         <Header />
         <div className="flex-1">{children}</div>
         <Footer />

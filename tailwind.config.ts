@@ -25,7 +25,7 @@ const config: Config = {
         },
         surface: {
           DEFAULT: "#FFFFFF",
-          muted: "#F7F7F5",
+          muted: "#F7F8F8",
           dark: "#111210",
         },
       },

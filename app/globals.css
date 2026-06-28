@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 255 255 255;
+    --background: 247 248 248;
     --foreground: 17 18 16;
   }
 
@@ -25,7 +25,7 @@
   }
 
   body {
-    background-color: #ffffff;
+    background-color: #F7F8F8;
     color: #111210;
     font-family: Inter, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -52,5 +52,15 @@
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@layer components {
+  .hero-gradient {
+    background: linear-gradient(160deg, #f0faf6 0%, #f5fbf8 40%, #F7F8F8 80%);
+  }
+
+  .dark .hero-gradient {
+    background: #080908 linear-gradient(160deg, rgba(15, 110, 86, 0.14) 0%, rgba(15, 110, 86, 0.05) 50%, rgba(15, 110, 86, 0) 80%);
   }
 }

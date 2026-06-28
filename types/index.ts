@@ -14,6 +14,8 @@ export interface Car {
   id: string;
   brand: string;
   model: string;
+  make: string;
+  modelFamily: string;
   year: number;
   category: CarCategory;
   transmission: Transmission;

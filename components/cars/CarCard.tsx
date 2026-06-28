@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import { Car } from "@/types";
 import { Badge } from "@/components/ui/Badge";
@@ -11,32 +14,49 @@ interface CarCardProps {
   isCheapest?: boolean;
 }
 
+function CarImageFallback() {
+  return (
+    <div className="flex flex-col items-center justify-center gap-2.5 w-full h-full">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="w-12 h-12 text-gray-300 dark:text-gray-600"
+      >
+        <path d="M19 17H5a2 2 0 01-2-2v-3l2.5-5h13L21 12v3a2 2 0 01-2 2z" />
+        <circle cx="7.5" cy="17" r="2" />
+        <circle cx="16.5" cy="17" r="2" />
+        <path d="M7 9.5h10" />
+      </svg>
+    </div>
+  );
+}
+
 export function CarCard({ car, pickupDate, returnDate, isCheapest }: CarCardProps) {
   const days = calcTotalDays(pickupDate || "", returnDate || "");
   const total = car.pricePerDay * days;
+  const [imgError, setImgError] = useState(false);
+
+  const imageUrl = `https://cdn.imagin.studio/getImage?customer=img&make=${car.make}&modelFamily=${car.modelFamily}&angle=23&width=450`;
 
   return (
     <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-5 flex flex-col sm:flex-row gap-5 shadow-card hover:shadow-card-hover hover:border-primary/30 transition-all duration-200">
-      {/* Image placeholder */}
-      <div className="sm:w-44 sm:shrink-0 h-36 sm:h-auto bg-[#F5F5F4] dark:bg-gray-800 rounded-xl flex flex-col items-center justify-center gap-2.5">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="w-12 h-12 text-gray-300 dark:text-gray-600"
-        >
-          <path d="M19 17H5a2 2 0 01-2-2v-3l2.5-5h13L21 12v3a2 2 0 01-2 2z" />
-          <circle cx="7.5" cy="17" r="2" />
-          <circle cx="16.5" cy="17" r="2" />
-          <path d="M7 9.5h10" />
-        </svg>
-        <span className="text-xs text-gray-400 dark:text-gray-500 font-medium text-center px-2">
-          {car.brand} {car.model}
-        </span>
+      {/* Image voiture */}
+      <div className="sm:w-44 sm:shrink-0 h-36 sm:h-auto bg-[#F5F5F4] dark:bg-gray-800 rounded-xl overflow-hidden flex items-center justify-center">
+        {imgError ? (
+          <CarImageFallback />
+        ) : (
+          <img
+            src={imageUrl}
+            alt={`${car.brand} ${car.model}`}
+            className="w-full h-full object-contain"
+            onError={() => setImgError(true)}
+          />
+        )}
       </div>
 
       {/* Content */}
